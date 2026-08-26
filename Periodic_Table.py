@@ -79,16 +79,23 @@ def remove_element(): # Remove the current element from the selected list
 
 
 def combine_elements():
-    if not selected_objects: return
-   
-    mass = 0 # starting mass at 0 as requested
-    mass = eC.massCalculate(selected_objects, selected_amounts)
-   
-    messagebox.showinfo("Mass Result", f"Total Combined Mass: {mass:.3f} u") # show the combined mass in a messagebox
-   
+    if not selected_objects:
+        return
+
+    mass = 0
+
+    # Calculate the total mass
+    for i in range(len(selected_objects)):
+        mass += selected_objects[i]["Atomic Mass"] * selected_amounts[i]
+
+    messagebox.showinfo(
+        "Mass Result",
+        f"Total Combined Mass: {mass:.3f} u"
+    )
+
     # Clear the lists
     selected_objects.clear()
-    selected_amounts.clear() #clears the amount and objects after the messagebox is shown
+    selected_amounts.clear()
     update_display()
 
 
