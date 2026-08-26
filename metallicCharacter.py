@@ -1,31 +1,5 @@
 import json
-class elementChange:
-    def locationSearch(self, e, group, period):#Look for an element based on its location in the periodic system
-        for i in range(len(e)):
-            if (e[i]["Group"] == group or group == None) or (e[i]["Period"] == period or period == None):
-                return e[i]
-        print("No element on that group or period")
-        return None
-
-
-    def symbolSearch(self, e, symbol):#Look for an element based on its name or symbol
-        for i in range(len(e)):
-            if e[i]["Symbol"] == symbol or str.lower(e[i]["Name"]) == str.lower(symbol):
-                return e[i]
-        print("No element with that name or symbol")
-        return None
-
-
-    def massCalculate(self, elementList, amountList):#elementList != e. Calculates the mass in u
-        mass = 0
-        for i in range(len(elementList)):
-            try:
-                mass += elementList[i]["Atomic Mass"] * amountList[i]
-            except:
-                mass += elementList[i]["Atomic Mass"]
-        return mass
-                
-
+class elementChange:#Set which element is which type of metal/nonmetal/metalloid
     #-----------------------------
 
     def reactive_nonmetal(self, e):
